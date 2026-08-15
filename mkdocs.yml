@@ -42,7 +42,7 @@ theme:
     - navigation.top
     - navigation.footer
     - navigation.indexes
-    - navigation.sections
+    - navigation.expand
     - toc.follow
     - content.code.copy
     - content.action.edit
