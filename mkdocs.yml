@@ -1,0 +1,73 @@
+site_name: Nebius IaC
+site_description: >-
+  Quick reference for the Nebius CLI and Nebius Terraform provider, with
+  copy-pasteable command and config examples.
+site_url: https://hjma29.github.io/nebius-iac/
+repo_name: hjma29/nebius-iac
+repo_url: https://github.com/hjma29/nebius-iac
+edit_uri: edit/main/docs/
+docs_dir: docs
+
+nav:
+  - Overview: index.md
+  - Nebius CLI:
+      - Overview: cli/index.md
+      - Profiles & IAM: cli/profile-iam.md
+  - Nebius Terraform:
+      - Overview: terraform/index.md
+  - Feedback ↗: https://github.com/hjma29/nebius-iac/issues/new
+
+theme:
+  name: material
+  icon:
+    repo: fontawesome/brands/github
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.top
+    - navigation.footer
+    - navigation.indexes
+    - navigation.sections
+    - toc.follow
+    - content.code.copy
+    - content.action.edit
+    - search.suggest
+    - search.highlight
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - toc:
+      permalink: true
+
+plugins:
+  - search
+  - include-markdown
+
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/hjma29/nebius-iac
+      name: Source on GitHub
