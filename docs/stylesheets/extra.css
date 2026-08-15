@@ -14,3 +14,12 @@
 .md-nav--primary .md-nav__item--nested > .md-nav .md-nav__link {
   font-weight: 400;
 }
+
+/* Material's default code font (Roboto Mono) doesn't render Unicode box-drawing
+   characters (─│┌┐└┘├┤┬┴┼) at the same fixed width as regular monospace glyphs,
+   so ASCII-art tables in fenced code blocks drift out of column alignment.
+   Fall back to fonts with correctly monospaced box-drawing glyphs instead. */
+.md-typeset pre,
+.md-typeset code {
+  font-family: Consolas, "Cascadia Mono", "Liberation Mono", Menlo, monospace;
+}
