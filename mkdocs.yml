@@ -8,6 +8,9 @@ repo_url: https://github.com/hjma29/nebius-iac
 edit_uri: edit/main/docs/
 docs_dir: docs
 
+extra_css:
+  - stylesheets/extra.css
+
 nav:
   - Overview: index.md
   - Nebius CLI:
