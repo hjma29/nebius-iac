@@ -73,8 +73,6 @@ nebius iam project list --parent-id tenant-e00n8mpcqrjw1ehff0 \
 
 ```bash
 nebius iam get-access-token
+<beaer token to access Nebius API, short-lived>
 ```
 
-Prints a short-lived bearer token to stdout (e.g. for use as an `Authorization: Bearer <token>`
-header when calling Nebius APIs directly). **Never commit or share the actual token value** — it's
-a live credential, not a static ID like a profile or project name.
