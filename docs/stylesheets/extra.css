@@ -6,8 +6,8 @@
 }
 
 .md-nav--primary .md-nav__item--nested > .md-nav {
-  margin-left: 0.3rem;
-  padding-left: 0.3rem;
+  margin-left: 2px;
+  padding-left: 2px;
   border-left: 1px solid var(--md-default-fg-color--lightest);
 }
 
