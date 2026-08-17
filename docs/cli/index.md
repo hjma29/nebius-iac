@@ -12,3 +12,4 @@ The `nebius` CLI manages authentication profiles and IAM resources
   IAM resources like projects and tenants.
 - **[Container Registry](container-registry.md)** — copy container images
   between regional registries with `skopeo`.
+- **[Compute](compute.md)** — list and delete Compute instances.
