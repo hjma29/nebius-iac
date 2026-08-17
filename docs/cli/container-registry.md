@@ -112,3 +112,19 @@ items:
 
 Confirms the `skopeo copy` above landed correctly — one `MANIFEST` artifact
 tagged `2.23.4-ubu22.04-cu12.4`, matching the destination image reference.
+
+### Compact tabular view
+
+The CLI also supports `--format table` for a built-in tabular view. For more
+control over the columns shown, pipe `--format json` through `jq`:
+
+```bash
+nebius registry image list --parent-id registry-u00btcj9x0cvd9sghc --format json \
+  | jq -r '["NAME","TAG","SIZE","STATUS","CREATED"], (.items[] | [.name, .tags[0], .size, .status, .created_at[0:10]]) | @tsv' \
+  | column -t -s $'\t'
+```
+
+```text
+NAME                           TAG                     SIZE        STATUS  CREATED
+u00btcj9x0cvd9sghc/nccl-tests  2.23.4-ubu22.04-cu12.4  6388334302  ACTIVE  2026-08-17
+```

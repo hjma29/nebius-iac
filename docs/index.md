@@ -1,5 +1,5 @@
 ---
-title: Nebius IaC
+title: CLI and Terraform Tutorial
 description: Quick reference for the Nebius CLI and Nebius Terraform provider.
 ---
 
