@@ -10,3 +10,5 @@ The `nebius` CLI manages authentication profiles and IAM resources
 
 - **[Profiles & IAM](profile-iam.md)** — create/manage profiles, and list
   IAM resources like projects and tenants.
+- **[Container Registry](container-registry.md)** — copy container images
+  between regional registries with `skopeo`.
