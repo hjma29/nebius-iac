@@ -13,21 +13,17 @@ directly registry-to-registry without needing a local Docker daemon.
 
 ## Copy an image between registries
 
-```bash
-skopeo copy --all \
-  docker://cr.eu-north1.nebius.cloud/nebius-benchmarks/nccl-tests:2.23.4-ubu22.04-cu12.4 \
-  docker://cr.us-central1.nebius.cloud/u00btcj9x0cvd9sghc/nccl-tests:2.23.4-ubu22.04-cu12.4
-```
-
 - `--all` copies every platform variant in a multi-arch manifest list, not
   just the one matching the local host.
 - The destination path (`u00btcj9x0cvd9sghc`) is the target project's
   container registry ID, not a literal repository name.
 
-Example output (blob-copy lines are repeated many times for large layers —
-condensed here):
+Blob-copy lines are repeated many times for large layers — condensed here:
 
-```text
+```console
+$ skopeo copy --all \
+  docker://cr.eu-north1.nebius.cloud/nebius-benchmarks/nccl-tests:2.23.4-ubu22.04-cu12.4 \
+  docker://cr.us-central1.nebius.cloud/u00btcj9x0cvd9sghc/nccl-tests:2.23.4-ubu22.04-cu12.4
 Getting image source signatures
 Copying blob 7021d1b70935 done   |
 Copying blob 0d6448aff889 done   |
@@ -64,11 +60,12 @@ Writing manifest to image destination
 
 ## List registries in a project
 
-```bash
-nebius registry list
-```
+`registry_fqdn` is the actual host to push/pull against
+(`cr.<region>.nebius.cloud`) — the `registry-...` `id` is only used for
+CLI/API calls like the ones below, not for image references.
 
-```yaml
+```console
+$ nebius registry list
 items:
   - metadata:
       id: registry-u00btcj9x0cvd9sghc
@@ -85,17 +82,13 @@ items:
       registry_fqdn: cr.us-central1.nebius.cloud
 ```
 
-`registry_fqdn` is the actual host to push/pull against
-(`cr.<region>.nebius.cloud`) — the `registry-...` `id` is only used for
-CLI/API calls like the ones below, not for image references.
-
 ## List images in a registry
 
-```bash
-nebius registry image list --parent-id registry-u00btcj9x0cvd9sghc
-```
+Confirms the `skopeo copy` above landed correctly — one `MANIFEST` artifact
+tagged `2.23.4-ubu22.04-cu12.4`, matching the destination image reference.
 
-```yaml
+```console
+$ nebius registry image list --parent-id registry-u00btcj9x0cvd9sghc
 items:
   - id: artifact-u00pzj2rj6p99a8ws8
     name: u00btcj9x0cvd9sghc/nccl-tests
@@ -110,21 +103,15 @@ items:
       - 2.23.4-ubu22.04-cu12.4
 ```
 
-Confirms the `skopeo copy` above landed correctly — one `MANIFEST` artifact
-tagged `2.23.4-ubu22.04-cu12.4`, matching the destination image reference.
-
 ### Compact tabular view
 
 The CLI also supports `--format table` for a built-in tabular view. For more
 control over the columns shown, pipe `--format json` through `jq`:
 
-```bash
-nebius registry image list --parent-id registry-u00btcj9x0cvd9sghc --format json \
+```console
+$ nebius registry image list --parent-id registry-u00btcj9x0cvd9sghc --format json \
   | jq -r '["NAME","TAG","SIZE","STATUS","CREATED"], (.items[] | [.name, .tags[0], .size, .status, .created_at[0:10]]) | @tsv' \
   | column -t -s $'\t'
-```
-
-```text
 NAME                           TAG                     SIZE        STATUS  CREATED
 u00btcj9x0cvd9sghc/nccl-tests  2.23.4-ubu22.04-cu12.4  6388334302  ACTIVE  2026-08-17
 ```
