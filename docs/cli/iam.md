@@ -21,8 +21,7 @@ graph LR
 - **Profile** is purely local — a named entry in `~/.nebius/config.yaml` (CLI-side only, not a cloud resource). It stores how to authenticate (`auth-type`, e.g. `federation`) and a default `parent-id` (usually a project) so you don't have to pass `--parent-id`/`-p` on every command. Switch identities/projects with `-p <profile>` or `nebius profile activate`.
 - **Tenant** is the top-level workspace — holds all projects, users, groups, quotas and billing. You cannot delete a tenant.
 - **Project** isolates resources (VMs, K8s clusters, buckets, etc.); every region gets its own default project. Service accounts belong to exactly one project.
-- **Group** is how access is actually granted — a user or service account has **no access** to anything until it's added to a group. Groups can be tenant-wide (built-in `auditors` → `viewers` → `editors` → `admins`, least to most access) or custom/project-scoped for least-privilege access.
-- **IAM** ties it together via **access permits**: a group is bound to a role at a given scope (tenant, project, or individual resource), which is what actually authorizes its members.
+
 
 ## Create and switch profiles
 
