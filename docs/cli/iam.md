@@ -26,8 +26,8 @@ graph LR
 
 ## Create and switch profiles
 
-```text
-nebius profile create
+```bash
+$ nebius profile create
 Profile name: hj-tenant1-project1-eu-north1
 Set api endpoint: api.nebius.cloud
 Select authorization type: federation
@@ -59,27 +59,27 @@ profiles:
 
 Switch between profiles with `nebius profile activate`:
 
-```text
-nebius profile list
+```bash
+$ nebius profile list
 hj-tenant1-project1-eu-north1 [default]
 profile-01
 
-nebius profile active
+$ nebius profile active
 hj-tenant1-project1-eu-north1
 
-nebius profile activate
+$ nebius profile activate
 hj-tenant1-project1-eu-north1  profile-01
 
-nebius profile activate profile-01
+$ nebius profile activate profile-01
 profile "profile-01" activated
 
-nebius profile current
+$ nebius profile current
 profile-01
 
-nebius profile active
+$ nebius profile active
 profile-01
 
-nebius profile activate hj-tenant1-project1-eu-north1
+$ nebius profile activate hj-tenant1-project1-eu-north1
 profile "hj-tenant1-project1-eu-north1" activated
 ```
 
@@ -90,11 +90,11 @@ default with `[default]`.
 
 ## Get the active profile's tenant/project without reading the config file
 
-```text
-nebius config get tenant-id
+```bash
+$ nebius config get tenant-id
 tenant-e00n8mpcqrjw1ehff0
 
-nebius config get parent-id
+$ nebius config get parent-id
 project-e00bq3stpr009arc9j3hqq
 ```
 
