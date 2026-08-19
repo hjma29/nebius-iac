@@ -23,3 +23,11 @@
 .md-typeset code {
   font-family: Consolas, "Cascadia Mono", "Liberation Mono", Menlo, monospace;
 }
+
+/* The primary sidebar repeats the site name (already in the top header bar)
+   as a static heading on desktop widths — drop it there. */
+@media screen and (min-width: 76.25em) {
+  .md-nav--primary .md-nav__title[for="__drawer"] {
+    display: none;
+  }
+}
