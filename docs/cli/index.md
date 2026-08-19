@@ -8,7 +8,7 @@ description: Quick reference for the Nebius CLI — profiles, auth, and IAM.
 The `nebius` CLI manages authentication profiles and IAM resources
 (tenants, projects, service accounts) for Nebius Cloud.
 
-- **[Profiles & IAM](profile-iam.md)** — create/manage profiles, and list
+- **[IAM](iam.md)** — create/manage profiles, and list
   IAM resources like projects and tenants.
 - **[Container Registry](container-registry.md)** — copy container images
   between regional registries with `skopeo`.

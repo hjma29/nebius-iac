@@ -15,7 +15,7 @@ nav:
   - Overview: index.md
   - Nebius CLI:
       - Overview: cli/index.md
-      - Profiles & IAM: cli/profile-iam.md
+      - IAM: cli/iam.md
       - Container Registry: cli/container-registry.md
       - Compute: cli/compute.md
   - Nebius Terraform:

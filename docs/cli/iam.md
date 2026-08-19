@@ -1,9 +1,9 @@
 ---
-title: Profiles & IAM
+title: IAM
 description: Nebius CLI profile setup and IAM (tenants, projects) commands.
 ---
 
-# Profiles & IAM
+# IAM
 
 ## Concepts: profile, tenant, project, group, IAM
 
@@ -17,34 +17,6 @@ graph LR
     Profile -.->|selects| Project
 ```
 
-```mermaid
-graph TD
-    CFG["Local CLI config<br/>~/.nebius/config.yaml"]
-    CFG --> PROF1["Profile: profile-01<br/>(auth-type, default parent-id)"]
-    CFG --> PROF2["Profile: profile-02<br/>(e.g. different tenant/account)"]
-
-    T["Tenant<br/>(workspace, billing, quotas)"]
-    T --> P1["Project A<br/>(e.g. eu-west1)"]
-    T --> P2["Project B<br/>(e.g. eu-north1)"]
-    T --> TG["Tenant-level groups<br/>admins / editors / viewers / auditors"]
-    T --> FED["Federation<br/>(SSO users)"]
-
-    FED --> U["User account"]
-    P1 --> SA["Service account<br/>(lives in one project)"]
-    P1 --> PG["Project-level groups<br/>(custom, scoped to this project)"]
-    P1 --> RES["Resources<br/>VMs, K8s clusters, buckets, ..."]
-
-    PROF1 -- "authenticates as" --> U
-    PROF1 -- "default parent-id" --> P1
-
-    U -- "group membership" --> TG
-    SA -- "group membership" --> TG
-    SA -- "group membership" --> PG
-
-    TG -- "access permit (role)" --> T
-    TG -- "access permit (role)" --> P1
-    PG -- "access permit (role)" --> RES
-```
 
 - **Profile** is purely local — a named entry in `~/.nebius/config.yaml` (CLI-side only, not a cloud resource). It stores how to authenticate (`auth-type`, e.g. `federation`) and a default `parent-id` (usually a project) so you don't have to pass `--parent-id`/`-p` on every command. Switch identities/projects with `-p <profile>` or `nebius profile activate`.
 - **Tenant** is the top-level workspace — holds all projects, users, groups, quotas and billing. You cannot delete a tenant.
